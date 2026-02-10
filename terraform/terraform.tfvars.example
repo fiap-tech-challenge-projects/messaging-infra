@@ -1,0 +1,23 @@
+# Example Terraform Variables for Messaging Infrastructure
+# Copy this file to terraform.tfvars and update with your values
+
+# AWS Region
+aws_region = "us-east-1"
+
+# Project Configuration
+project_name = "fiap-tech-challenge"
+environment  = "development" # or "staging" or "production"
+
+# SQS Configuration
+message_retention_seconds  = 345600 # 4 days
+visibility_timeout_seconds = 300    # 5 minutes
+max_receive_count          = 3      # Retries before moving to DLQ
+
+# EventBridge Event Archive (Optional)
+enable_event_archive         = false # Set to true for production
+event_archive_retention_days = 90    # Days to retain events for replay
+
+# CloudWatch Monitoring
+enable_cloudwatch_alarms = true
+alarm_email              = "" # Leave empty if you don't want email notifications
+# alarm_email            = "your-team@example.com" # Uncomment and set for email alerts
